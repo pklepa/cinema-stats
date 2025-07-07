@@ -1,5 +1,7 @@
-export async function POST() {
+export async function POST(request: Request) {
+	const { siteUrl } = await request.json();
+
 	return Response.json({
-		hello: 'world',
+		siteUrl,
 	});
 }

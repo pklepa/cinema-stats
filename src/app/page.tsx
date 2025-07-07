@@ -3,10 +3,17 @@
 import { useState } from 'react';
 
 export default function Home() {
-	const [result, setResults] = useState<object>();
+	const [results, setResults] = useState<object>();
 
 	async function handleOnClick() {
-		setResults({ status: 'Not yet implemented.' });
+		const _results = await fetch('/api/scraper', {
+			method: 'POST',
+			body: JSON.stringify({
+				siteUrl: 'https://spacejelly.dev',
+			}),
+		}).then((r) => r.json());
+
+		setResults(_results);
 	}
 
 	return (
@@ -32,10 +39,10 @@ export default function Home() {
 					</button>
 				</p>
 
-				{result && (
+				{results && (
 					<div className="grid">
 						<pre className="overflow-x-scroll rounded bg-zinc-700 px-5 py-4 text-left">
-							<code>{JSON.stringify(result, undefined, 2)}</code>
+							<code>{JSON.stringify(results, undefined, 2)}</code>
 						</pre>
 					</div>
 				)}
