@@ -5,8 +5,6 @@ export default function Home() {
 				gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20"
 		>
 			<p>Hello world</p>
-
-			<span> </span>
 		</div>
 	);
 }
